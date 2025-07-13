@@ -149,11 +149,11 @@ export default function SplashCursor({
 
       const halfFloatTexType = isWebGL2
         ? (gl as WebGL2RenderingContext).HALF_FLOAT
-        : (halfFloat && (halfFloat as any).HALF_FLOAT_OES) || 0;
+        : (halfFloat && (halfFloat as { HALF_FLOAT_OES: number }).HALF_FLOAT_OES) || 0;
 
-      let formatRGBA: unknown;
-      let formatRG: unknown;
-      let formatR: unknown;
+      let formatRGBA: { internalFormat: number; format: number } | null;
+      let formatRG: { internalFormat: number; format: number } | null;
+      let formatR: { internalFormat: number; format: number } | null;
 
       if (isWebGL2) {
         formatRGBA = getSupportedFormat(
@@ -892,6 +892,9 @@ export default function SplashCursor({
       const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
       gl.disable(gl.BLEND);
 
+      if (!rgba) {
+        throw new Error("Required RGBA format is not supported by the WebGL context.");
+      }
       if (!dye) {
         dye = createDoubleFBO(
           dyeRes.width,
@@ -913,6 +916,9 @@ export default function SplashCursor({
         );
       }
 
+      if (!rg) {
+        throw new Error("Required RG format is not supported by the WebGL context.");
+      }
       if (!velocity) {
         velocity = createDoubleFBO(
           simRes.width,
@@ -934,6 +940,9 @@ export default function SplashCursor({
         );
       }
 
+      if (!r) {
+        throw new Error("Required R format is not supported by the WebGL context.");
+      }
       divergence = createFBO(
         simRes.width,
         simRes.height,
