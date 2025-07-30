@@ -56,7 +56,7 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden bg-black/30 backdrop-blur-md border-t border-white/10">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {['introduction', 'skills', 'experience', 'education', 'achievements'].map((section) => (
+              {['introduction', 'skills', 'experience', 'projects', 'education', 'achievements'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}

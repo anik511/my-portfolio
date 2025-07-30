@@ -4,7 +4,7 @@ import {ChevronDown, Download, Mail, Phone, Github, Linkedin,} from "lucide-reac
 import AchievementsCard from "@/components/AchievementsCard";
 import AcademicCard from "@/components/AcademicCard";
 import SkillsSection from "@/components/technicalSkills/TechnicalSkills";
-// import PersonalProjects from "@/components/personalProjects/PersonalProjects";
+import PersonalProjects from "@/components/personalProjects/PersonalProjects";
 import WorkExperience from "@/components/workExperience/WorkExperience";
 import FuzzyText from "@/components/FuzzyText";
 export default function Home() {
@@ -164,7 +164,7 @@ export default function Home() {
       </section>
       <SkillsSection/>
       <WorkExperience/>
-      {/* <PersonalProjects/> */}
+      <PersonalProjects/>
       <section id="education" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">

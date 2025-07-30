@@ -1,209 +1,121 @@
-"use client";
-import { useState } from "react";
-import { ExternalLink, Github, Code, Zap } from "lucide-react";
+import ProjectCard from "./ProjectCard";
 
 const PersonalProjects = () => {
-  const [activeProject, setActiveProject] = useState<number | null>(null);
-
   const personalProjects = [
     {
       id: 1,
-      title: "CryptoTracker Pro",
+      title: "Restaurant Easy",
       description:
-        "Real-time cryptocurrency portfolio tracker with advanced analytics and market insights",
-      image: "🚀",
-      technologies: ["Next.js", "TypeScript", "Chart.js", "PostgreSQL"],
+        "A modern, easy-to-use restaurant management system built with Next.js and TypeScript. Simplifies restaurant operations including order management, employee tracking, item cataloging, and branch/organization management.",
+      thumbnail: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop&auto=format",
+      fallbackGradient: "from-orange-400 via-red-500 to-pink-500",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
       features: [
-        "Real-time price tracking",
-        "Portfolio analytics",
-        "Market trend analysis",
+        "Organization and branch management",
+        "Employee management system",
+        "Order and menu management",
+        "Responsive UI with reusable components"
       ],
-      github: "#",
-      demo: "#",
-      status: "In Development",
+      github: "https://github.com/anik511/restaurant-easy",
+      demo: "https://restaurant-easy.vercel.app/",
+      status: "Completed",
+      progress: 100,
+      category: "Business",
     },
     {
       id: 2,
-      title: "TaskFlow Manager",
+      title: "Medication Tracker",
       description:
-        "Collaborative project management tool with real-time updates and team coordination",
-      image: "📊",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
+        "A modern, responsive medication tracking app built with Vue 3, Pinia, and Tailwind CSS. Helps users manage daily medications, track schedules, and maintain healthy habits with a beautiful interface.",
+      thumbnail: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop&auto=format",
+      fallbackGradient: "from-green-400 via-blue-500 to-purple-600",
+      technologies: ["Vue 3", "Pinia", "TypeScript", "Tailwind CSS", "Vite"],
       features: [
-        "Real-time collaboration",
-        "Task automation",
-        "Team analytics",
+        "Daily schedule & calendar",
+        "Status tracking (taken/missed)",
+        "Profile management with streaks",
+        "Persistent state with Pinia"
       ],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/anik511/medication-tracker",
+      demo: "https://medication-tracker-three.vercel.app/",
       status: "Completed",
+      progress: 100,
+      category: "Healthcare",
     },
     {
       id: 3,
-      title: "AI Code Assistant",
+      title: "Todo App React",
       description:
-        "Intelligent code completion and suggestion tool for faster development workflow",
-      image: "🤖",
-      technologies: ["Vue.js", "Python", "TensorFlow", "Redis"],
+        "A clean and efficient todo application built with React and Vite. Features a minimal setup with HMR (Hot Module Replacement) and ESLint rules for maintaining code quality and fast development workflow.",
+      thumbnail: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop&auto=format",
+      fallbackGradient: "from-blue-400 via-cyan-500 to-teal-600",
+      technologies: ["React", "Vite", "JavaScript", "ESLint"],
       features: [
-        "Code autocompletion",
-        "Bug detection",
-        "Performance optimization",
+        "Fast development with Vite",
+        "Hot Module Replacement",
+        "ESLint integration",
+        "Minimal and clean setup"
       ],
-      github: "#",
-      demo: "#",
-      status: "Beta",
+      github: "https://github.com/anik511/todo-app-react",
+      demo: "https://todo-app-react-ashy-six.vercel.app/",
+      status: "Completed",
+      progress: 100,
+      category: "Productivity",
     },
     {
       id: 4,
-      title: "EcoTrack",
+      title: "Cafes with VueFire",
       description:
-        "Environmental impact tracker helping users monitor and reduce their carbon footprint",
-      image: "🌱",
-      technologies: ["Next.js", "Supabase", "Tailwind CSS", "Chart.js"],
+        "A simple cafe rating website built with Vue 3 and Firebase. Features real-time data synchronization, user authentication, and interactive cafe rating system with beautiful UI components.",
+      thumbnail: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=250&fit=crop&auto=format",
+      fallbackGradient: "from-amber-400 via-orange-500 to-red-500",
+      technologies: ["Vue 3", "Firebase", "VueFire", "Vuetify", "Pinia"],
       features: [
-        "Carbon footprint tracking",
-        "Eco-friendly suggestions",
-        "Progress analytics",
+        "Firebase authentication",
+        "Real-time Firestore database",
+        "Interactive rating system",
+        "Responsive design with Vuetify"
       ],
-      github: "#",
-      demo: "#",
-      status: "Planning",
+      github: "https://github.com/anik511/cafes-with-vueFire",
+      demo: "https://vue-cafe.netlify.app/",
+      status: "Completed",
+      progress: 100,
+      category: "Social",
     },
   ];
 
-  const getStatusColor = (status:string) => {
-    switch (status) {
-      case "Completed":
-        return "bg-green-500/20 text-green-400 border-green-500/30";
-      case "In Development":
-        return "bg-blue-500/20 text-blue-400 border-blue-500/30";
-      case "Beta":
-        return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-      case "Planning":
-        return "bg-purple-500/20 text-purple-400 border-purple-500/30";
-      default:
-        return "bg-gray-500/20 text-gray-400 border-gray-500/30";
-    }
-  };
   return (
-    <div id="projects" className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
-      <div className="max-w-6xl mx-auto space-y-16">
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-              Personal Projects
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Innovative side projects showcasing creativity and technical
-              expertise
-            </p>
-          </div>
+    <section id="projects" className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Personal Projects
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Innovative side projects showcasing creativity, technical expertise, and problem-solving skills
+          </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {personalProjects.map((project) => (
-              <div
-                key={project.id}
-                className={`relative backdrop-blur-xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all duration-300 group cursor-pointer ${
-                  activeProject === project.id
-                    ? "ring-2 ring-purple-500/50"
-                    : ""
-                }`}
-                onClick={() =>
-                  setActiveProject(
-                    activeProject === project.id ? null : project.id
-                  )
-                }
-              >
-                {/* Project Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="text-3xl">{project.image}</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">
-                        {project.title}
-                      </h3>
-                      <span
-                        className={`inline-block px-2 py-1 rounded-full text-xs border ${getStatusColor(
-                          project.status
-                        )}`}
-                      >
-                        {project.status}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <a
-                      href={project.github}
-                      className="p-2 bg-gray-700/50 rounded-lg hover:bg-gray-600/50 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                    <a
-                      href={project.demo}
-                      className="p-2 bg-blue-600/50 rounded-lg hover:bg-blue-500/50 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8">
+          {personalProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
 
-                {/* Description */}
-                <p className="text-gray-300 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Features */}
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold mb-2 flex items-center gap-1">
-                    <Zap className="w-4 h-4 text-yellow-400" />
-                    Key Features
-                  </h4>
-                  <div className="flex flex-wrap gap-1">
-                    {project.features.map((feature, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded-full"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Technologies */}
-                <div>
-                  <h4 className="text-sm font-semibold mb-2 flex items-center gap-1">
-                    <Code className="w-4 h-4 text-purple-400" />
-                    Tech Stack
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 px-2 py-1 rounded-full text-xs border border-purple-500/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full blur-xl"></div>
-                </div>
-
-                {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* View All Projects CTA */}
+        {/* <div className="text-center mt-12">
+          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
+            View All Projects
+          </button>
+        </div> */}
       </div>
-    </div>
+    </section>
   );
 };
 

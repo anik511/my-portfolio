@@ -39,7 +39,7 @@ const WorkExperience = () => {
             "Built real-time loan tracking dashboard with automated repayment calculations and alerts",
             "Implemented microservices integration for seamless data flow between loan and customer modules",
           ],
-          technologies: ["React", "TypeScript", "Redux", "MySQL", "REST API"],
+          technologies: ["Vue.js", "Vuex", "PostgreSQL", "Java (Spring Boot)",],
         },
         {
           name: "Swosti-CoopBank247",
@@ -54,7 +54,7 @@ const WorkExperience = () => {
             "Developed member deposit and lending interfaces with real-time balance updates and transaction history",
             "Created centralized component library ensuring consistent UI/UX across multiple branches",
           ],
-          technologies: ["Vue.js", "Vuex", "i18n", "PostgreSQL", "Firebase"],
+          technologies: ["Vue.js", "Vuex", "i18n", "PostgreSQL", "Java (Spring Boot)",],
         },
         {
           name: "Swosti-Migration",
