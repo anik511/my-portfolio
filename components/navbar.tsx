@@ -29,7 +29,7 @@ export default function Navbar() {
             
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                {['introduction', 'skills', 'experience', 'education', 'achievements'].map((section) => (
+                {['introduction', 'skills', 'experience', 'projects', 'education', 'achievements'].map((section) => (
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
@@ -62,7 +62,7 @@ export default function Navbar() {
                   onClick={() => scrollToSection(section)}
                   className="block px-3 py-2 rounded-md text-base font-medium hover:bg-white/10 transition-colors capitalize w-full text-left"
                 >
-                  {section}
+                  {section} 1
                 </button>
               ))}
             </div>
